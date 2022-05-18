@@ -1,0 +1,127 @@
+﻿<Window x:Class="Perfumer.view.layouts.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Perfumer.view.layouts"
+        mc:Ignorable="d"
+        
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}" Topmost="True" 
+        
+        Title="" Height="650" Width="1100"
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized" WindowStyle="ToolWindow" Icon="/assets/logoPerfumer.ico">
+
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="OptionBorderStyle" TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="Height" Value="30"/>
+            </Style>
+
+            <Style TargetType="{x:Type Path}">
+                <Setter Property="Fill" Value="#FFEEEEEE"/>
+                <Setter Property="Stretch" Value="Uniform"/>
+            </Style>
+
+            <Style TargetType="{x:Type TreeViewItem}">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="#FFEEEEEE"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Foreground" Value="#FFEEEEEE"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="menuButtonStyle" TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Height" Value="15"/>
+                <Setter Property="Width" Value="15"/>
+                <Setter Property="Margin" Value="2,0"/>
+                <Setter Property="Opacity" Value=".7"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="5">
+
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="1"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border >
+            <Grid Margin="20, 5, 5, 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!--Menu-->
+                    <RowDefinition Height="Auto"/>
+                    <!--Option Buttons-->
+                    <RowDefinition/>
+                    <!--Download List-->
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Logo-->
+                    <Image
+                    Source="/assets/logoPerfumer.png"
+                    Height="30"
+                    Width="30" />
+
+                    <!--SideBar-->
+                   
+
+                    <!--Names-->
+                    <TextBlock Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                       HorizontalAlignment="Center" Grid.Column="1" Text="Парфюмер" />
+
+                </Grid>
+            </Grid>
+        </Border>
+
+        <Frame Background="#FFEEEEEE" 
+               Name="MainFrame" 
+               NavigationUIVisibility="Hidden"
+               Margin="0,53,0,0"/>
+
+    </Grid>
+</Window>
+<!--
+b64->QGRpc29vbG9v
+-->

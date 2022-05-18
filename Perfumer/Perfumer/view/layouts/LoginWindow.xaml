@@ -1,0 +1,94 @@
+﻿<Window x:Class="Perfumer.view.layouts.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Perfumer.view.layouts"
+        mc:Ignorable="d"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" Topmost="True" 
+ 
+        WindowStartupLocation="CenterScreen" 
+        AllowsTransparency="True" WindowStyle="None"
+        
+        Title="LoginWindow" Height="550" Width="800" Icon="/assets/logoPerfumer.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:Card Grid.Column="1"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch">
+            <Image Source="/assets/loginFont.jpg" />
+        </materialDesign:Card>
+
+        <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Cursor="Hand" Margin="5,5,0,0" Name="closeLogin" MouseDown="closeLogin_MouseDown"/>
+
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                       HorizontalAlignment="Center" Text="Парфюмер"/>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,20,0,0" Grid.Row="1"
+                        HorizontalAlignment="Center">
+                <materialDesign:PackIcon Grid.Row="1"
+                                         Kind="Account"
+                                         VerticalAlignment="Center"
+                                         Margin="10,0,5,0"
+                                         Foreground="{Binding ElementName=loginBox, Path=BorderBrush}" />
+                <TextBox Name="loginBox"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         materialDesign:HintAssist.Hint="Логин"
+                         Width="140"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,20,0,0" Grid.Row="2"
+                        HorizontalAlignment="Center">
+                <materialDesign:PackIcon Grid.Row="1"
+                                         Kind="Password"
+                                         VerticalAlignment="Center"
+                                         Margin="10,0,5,0"
+                                         Foreground="{Binding ElementName=passwordBox, Path=BorderBrush}" />
+                <PasswordBox Name="passwordBox"
+                         materialDesign:HintAssist.Hint="Пароль"
+                         materialDesign:HintAssist.Foreground="Green"
+                         materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                         IsEnabled="True"
+                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                         Width="140"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="90,20,0,0" Grid.Row="3"
+                        HorizontalAlignment="Center">
+
+                <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                        materialDesign:ButtonAssist.CornerRadius="20"
+                        Height="40" Width="80" Margin="50,0,0,0" Content="Войти"
+                        Name="enterLogin" Click="enterLogin_Click"
+                        Cursor="Hand"/>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Window>
+<!--
+b64->QGRpc29vbG9v
+-->

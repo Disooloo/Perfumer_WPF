@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PerfumerDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ProductDB">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="C_id" Type="Int32" Nullable="false" />
+    <Property Name="nameTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isvalid" Type="Boolean" />
+    <Property Name="id_seller" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SellersDB" Relationship="Self.FK_ProductDB_SellersDB" FromRole="ProductDB" ToRole="SellersDB" />
+  </EntityType>
+  <EntityType Name="SellersDB">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="C_id" Type="Int32" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="fastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="site" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductDB" Relationship="Self.FK_ProductDB_SellersDB" FromRole="SellersDB" ToRole="ProductDB" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TeamsDB">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="C_id" Type="Int32" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="role" Type="Boolean" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WarehouseDB">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="C_id" Type="Int32" Nullable="false" />
+    <Property Name="titleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="responsible" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_ProductDB_SellersDB">
+    <End Role="SellersDB" Type="Self.SellersDB" Multiplicity="0..1" />
+    <End Role="ProductDB" Type="Self.ProductDB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SellersDB">
+        <PropertyRef Name="C_id" />
+      </Principal>
+      <Dependent Role="ProductDB">
+        <PropertyRef Name="id_seller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PerfumerDataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ProductDB" EntityType="Self.ProductDB" />
+    <EntitySet Name="SellersDB" EntityType="Self.SellersDB" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TeamsDB" EntityType="Self.TeamsDB" />
+    <EntitySet Name="WarehouseDB" EntityType="Self.WarehouseDB" />
+    <AssociationSet Name="FK_ProductDB_SellersDB" Association="Self.FK_ProductDB_SellersDB">
+      <End Role="SellersDB" EntitySet="SellersDB" />
+      <End Role="ProductDB" EntitySet="ProductDB" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
